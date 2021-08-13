@@ -6,6 +6,22 @@ import IMG from "./IMG";
 import axios from "axios";
 import { BASE_URL, API_KEY } from './constants/index'
 
+import styled from 'styled-components';
+
+const StyledApp = styled.div `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    background-color: ${pr => pr.theme.backgroundColor};
+  }
+
+  h1 {
+    margin: 1% 0;
+  }
+`
+
 export default function App() {
   const [getDate, setGetDate] = useState('')
   const [docTitle, setDocTitle] = useState(null)
@@ -31,16 +47,18 @@ export default function App() {
   })
 
   return (
-    <div className="App">
-      <Title title={docTitle}/>
-      {/* <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p> */}
-      <IMG url={img} />
-      {<p> </p>}
-      {<input id='Date' type='date' onChange={inputHandler} />}
-      <Explanation explanation={expl} date={date} copyright={copyright} />
-    </div>
+    <StyledApp className="App">
+      <div>
+        <Title class='title' title={docTitle}/>
+        {/* <p>
+          Read through the instructions in the README.md file to build your NASA
+          app! Have fun <span role="img" aria-label='go!'>🚀</span>!
+        </p> */}
+        <IMG url={img} />
+        {<p> </p>}
+        {<input id='Date' type='date' onChange={inputHandler} />}
+        <Explanation explanation={expl} date={date} copyright={copyright} />
+      </div>
+    </StyledApp >
   );
 }
